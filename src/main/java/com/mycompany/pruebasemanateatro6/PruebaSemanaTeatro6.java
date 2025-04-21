@@ -58,7 +58,7 @@ public class PruebaSemanaTeatro6 {
       
     static void mostrarMenu() { // Muestra el menú principal
         System.out.println("_:::Menu Principal:::_");
-        System.out.println("1.Disponibilidad de asientos"); // En esta opcion preferi mostrar los asientos disponibles y asi mostrar reservas para evitar errores de compra
+        System.out.println("1.Disponibilidad de asientos"); // En esta opcion preferi mostrar los asientos disponibles y asi mostrar los asientos que ya estan  reservados para evitar errores de compra
         System.out.println("2.Reservar Entrada");
         System.out.println("3.Confirmar Reserva");
         System.out.println("4.Generar Boleta");
@@ -112,7 +112,7 @@ public class PruebaSemanaTeatro6 {
         boolean[] filaSeleccionada = obtenerFila(filaSel);
 
         if (filaSeleccionada[asientoSel - 1]) {
-            System.out.println("¡¡¡Este asiento ya esta ocupado!!!");// --
+            System.out.println("¡¡¡Este asiento ya esta ocupado!!!");// Si el asiento seleccionado no esta dsiponible se le muestra al usario este mensaje
         } else {
             filaSeleccionada[asientoSel - 1] = true;
             reservafila = filaSel;
@@ -135,16 +135,16 @@ public class PruebaSemanaTeatro6 {
         }
     }
 
-    static void confirmarReserva() { // Confirma la reserva 
+    static void confirmarReserva() { // Confirma la reserva y muestra la informacion al usario de fila y asiento.
         if (reservaPendiente) {
             System.out.println("::Reserva confirmada::");
             System.out.println("Fila: " + reservafila);
             System.out.println("Asiento: " + reservaasiento);
             System.out.println("");
-            reservaPendiente = false;
+            reservaPendiente = false; 
             entradaVendida++;
         } else {
-            System.out.println("No hay reservas pendientes."); //valida que el usario no este confirmando una reseva que no existe
+            System.out.println("No hay reservas pendientes."); // valida que el usario este confirmando una reserva existente 
         }
     }
 
@@ -177,7 +177,7 @@ public class PruebaSemanaTeatro6 {
         System.out.print("Ingrese nueva fila (1-" + filas + "): ");// Se le solicita al usario la nueva fila que desa
         int nuevaFila = sc.nextInt();
         if (nuevaFila < 1 || nuevaFila > filas) {
-            System.out.println("Fila no vida.");
+            System.out.println("Fila no validaa.");
             return;
         }
         System.out.print("Ingrese nuevo asiento (1-" + asientos + "): "); //Se le pide al usuario ungresar el nuevo asiento que desea
@@ -199,7 +199,7 @@ public class PruebaSemanaTeatro6 {
             System.out.println("");
             System.out.println("Nueva Fila: " + nuevaFila);
             System.out.println("Nuevo Asiento: " + nuevoAsiento );
-            System.out.println("!!! No tiene que volver a reservar la entrada :) ¡¡¡");
+            System.out.println("!!! No tiene que volver a reservar la entrada :) ¡¡¡"); //Se le indica al usuario que no es necesario volver a reservar la entrada.
         }
     }
 
